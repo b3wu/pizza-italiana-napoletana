@@ -1,0 +1,89 @@
+{
+  "Pizze klasyczne": [
+    {
+      "n": "Margherita",
+      "d": "Sos San Marzano, fior di latte, bazylia, oliwa",
+      "p": "28 PLN"
+    },
+    {
+      "n": "Marinara",
+      "d": "Sos pomidorowy, czosnek, oregano, oliwa",
+      "p": "24 PLN"
+    },
+    {
+      "n": "Prosciutto e Funghi",
+      "d": "Szynka, pieczarki, fior di latte",
+      "p": "36 PLN"
+    }
+  ],
+  "Specjalne": [
+    {
+      "n": "Diavola",
+      "d": "Spianata piccante, fior di latte, miód peperoncino",
+      "p": "39 PLN"
+    },
+    {
+      "n": "Quattro Formaggi",
+      "d": "Fior di latte, gorgonzola, parmezan, pecorino",
+      "p": "41 PLN"
+    },
+    {
+      "n": "Pistacchio e Mortadella",
+      "d": "Krem pistacjowy, mortadella, burrata",
+      "p": "46 PLN"
+    }
+  ],
+  "Białe (bez sosu)": [
+    {
+      "n": "Tartufo",
+      "d": "Krem truflowy, grzyby, rukola",
+      "p": "44 PLN"
+    },
+    {
+      "n": "Patate",
+      "d": "Ziemniak, rozmaryn, parmezan",
+      "p": "34 PLN"
+    }
+  ],
+  "Dodatki": [
+    {
+      "n": "Oliwki",
+      "d": "Mix oliwek włoskich",
+      "p": "9 PLN"
+    },
+    {
+      "n": "Foccacia",
+      "d": "Z rozmarynem i oliwą",
+      "p": "14 PLN"
+    }
+  ],
+  "Napoje": [
+    {
+      "n": "Limonata artigianale",
+      "d": "Cytrynowa, 0.33l",
+      "p": "12 PLN"
+    },
+    {
+      "n": "San Pellegrino",
+      "d": "Woda gazowana, 0.5l",
+      "p": "10 PLN"
+    },
+    {
+      "n": "Espresso",
+      "d": "Podwójne",
+      "p": "10 PLN"
+    }
+  ],
+  "Desery": [
+    {
+      "n": "Tiramisu",
+      "d": "Klasyczne na espresso",
+      "p": "19 PLN"
+    },
+    {
+      "n": "Panna Cotta",
+      "d": "Z sosem malinowym",
+      "p": "17 PLN"
+    }
+  ]
+}

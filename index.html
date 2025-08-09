@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="pl"><head>
+<html lang="pl">
+<head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Pizza Italiana Napoletana — Zamów online</title>
-<link rel="icon" href="assets/img/logo.svg"/><link rel="stylesheet" href="assets/css/styles.css"/>
-<script defer src="assets/js/script.js"></script>
-</head><body>
+<link rel="icon" href="./assets/img/logo.svg"/><link rel="stylesheet" href="./assets/css/styles.css"/>
+<script>window.MENU = {"Pizze klasyczne": [{"id": "margherita", "n": "Margherita", "d": "San Marzano, fior di latte, bazylia", "p": 28}, {"id": "marinara", "n": "Marinara", "d": "Sos pomidorowy, czosnek, oregano", "p": 24}, {"id": "prosciutto", "n": "Prosciutto e Funghi", "d": "Szynka, pieczarki, fior di latte", "p": 36}], "Specjalne": [{"id": "diavola", "n": "Diavola", "d": "Spianata piccante, miód peperoncino", "p": 39}, {"id": "quattro", "n": "Quattro Formaggi", "d": "Fior di latte, gorgonzola, parmezan, pecorino", "p": 41}]};</script>
+<script defer src="./assets/js/script.js"></script>
+</head>
+<body>
 <header class="header">
   <div class="container nav">
-    <a class="brand" href="#"><img src="assets/img/logo.svg" alt="Logo"/><span>Pizza Italiana Napoletana</span></a>
+    <a class="brand" href="#"><img src="./assets/img/logo.svg" alt="Logo"/><span>Pizza Italiana Napoletana</span></a>
     <ul>
       <li><a href="#menu">Menu</a></li>
       <li><a href="#zamow">Zamówienie</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
-      <li><a href="privacy.html">Polityka prywatności</a></li>
-      <li><a href="regulamin.html">Regulamin</a></li>
+      <li><a href="./privacy.html">Polityka prywatności</a></li>
+      <li><a href="./regulamin.html">Regulamin</a></li>
     </ul>
     <button class="cta" onclick="document.querySelector('#menu').scrollIntoView()">Zamów online</button>
   </div>
@@ -25,9 +28,9 @@
       <h1>Neapol 2025 — 90 sekund w piecu.</h1>
       <p class="small">Ciasto 48h • San Marzano • fior di latte • piec 450–500°C</p>
       <div class="partners" style="margin-top:8px">
-        <span class="partner"><img src="assets/img/partners/wolt.svg" alt="Wolt"/>Wolt</span>
-        <span class="partner"><img src="assets/img/partners/glovo.svg" alt="Glovo"/>Glovo</span>
-        <span class="partner"><img src="assets/img/partners/ubereats.svg" alt="Uber Eats"/>UberEats</span>
+        <span class="partner"><img src="./assets/img/partners/wolt.svg" alt="Wolt"/>Wolt</span>
+        <span class="partner"><img src="./assets/img/partners/glovo.svg" alt="Glovo"/>Glovo</span>
+        <span class="partner"><img src="./assets/img/partners/ubereats.svg" alt="Uber Eats"/>UberEats</span>
       </div>
     </div>
     <div class="card">
@@ -52,9 +55,11 @@
   <div class="container">
     <div class="card">
       <h3>Koszyk i zamówienie</h3>
-      <label>Sposób realizacji
-        <select id="deliveryMethod"><option value="pickup">Odbiór osobisty</option><option value="delivery">Dostawa (+6 PLN)</option></select>
-      </label>
+      <div class="row">
+        <label>Sposób realizacji
+          <select id="deliveryMethod"><option value="pickup">Odbiór osobisty</option><option value="delivery">Dostawa (+6 PLN)</option></select>
+        </label>
+      </div>
       <div class="totals">
         <div>Razem: <strong id="checkout-subtotal">0,00 PLN</strong></div>
         <div>Dostawa: <strong id="checkout-delivery">0,00 PLN</strong></div>
@@ -72,7 +77,6 @@
   <div class="container">
     <h2>Kontakt</h2>
     <p>Ul. Przykładowa 10, 00-000 Miasto • tel. <a href="tel:+48600000000">+48 600 000 000</a></p>
-    <div class="card"><iframe src="https://www.google.com/maps?q=Ul.+Przyk%C5%82adowa+10,+00-000+Miasto&output=embed" width="100%" height="260" style="border:0" loading="lazy"></iframe></div>
   </div>
 </section>
 

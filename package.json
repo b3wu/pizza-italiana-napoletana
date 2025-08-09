@@ -3,7 +3,6 @@
   "name": "pizza-italiana-napoletana",
   "private": true,
   "version": "1.0.0",
-  "description": "Pizza Italiana Napoletana - static site with Stripe Checkout (Netlify Functions)",
   "dependencies": {
     "stripe": "^14.0.0"
   }

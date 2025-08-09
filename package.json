@@ -1,1 +1,9 @@
-{"name":"pizza-italiana-napoletana-spa","private":true,"version":"1.0.0","dependencies":{"stripe":"^14.0.0"}}
+
+{
+  "name": "pizza-italiana-napoletana",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

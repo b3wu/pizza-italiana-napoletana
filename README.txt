@@ -1,20 +1,6 @@
 
-Pizza Italiana Napoletana — strona www
-======================================
-
-Gotowy, responsywny szablon (mobile/desktop) dla pizzerii neapolitańskiej.
-
-Struktura:
-- index.html — strona główna z sekcjami: Menu, Dostawa/Rezerwacje, O nas, Galeria, Kontakt
-- assets/css/styles.css — nowoczesny styl
-- assets/js/script.js — obsługa nawigacji mobilnej i formularzy
-- assets/img/logo.svg, favicon.svg
-- menu.json — menu w formacie JSON (opcjonalnie do integracji z backendem)
-
-Jak użyć:
-1. Otwórz plik `index.html` w przeglądarce.
-2. Podmień dane kontaktowe, godziny, linki do dostaw (Glovo/Uber/Wolt), adres.
-3. Wstaw swoje zdjęcia w sekcji Galeria (zastąp `.ph` obrazami).
-4. (Opcjonalnie) Podepnij system zamówień online lub zostaw przyciski jako linki.
-
-Licencja: do użytku komercyjnego dla Twojej pizzerii.
+Deploy (Stripe only):
+1) W Netlify ustaw STRIPE_SECRET_KEY, SUCCESS_URL, CANCEL_URL (zrobiłeś).
+2) Zdeployuj z repo albo przez Netlify CLI (drag&drop nie uruchomi Functions).
+3) Po deployu wejdź na /.netlify/functions/create-checkout-session (powinno zwrócić 'Method Not Allowed').
+4) Na stronie dodaj pozycje do koszyka -> 'Zapłać online' -> Stripe Checkout (test: 4242 4242 4242 4242).

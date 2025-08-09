@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="200" viewBox="0 0 640 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Pizza Italiana Napoletana</title>
+  <desc id="desc">Minimalistyczne logo z pizzą w stylu neapolitańskim</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff4d4f"/>
+      <stop offset="100%" stop-color="#ff7a45"/>
+    </linearGradient>
+  </defs>
+  <!-- Pizza slice -->
+  <g transform="translate(40,30)">
+    <circle cx="70" cy="70" r="64" fill="url(#g1)" opacity="0.12"/>
+    <path d="M70 0 L140 120 L0 120 Z" fill="#F5C16C" stroke="#3b3b3b" stroke-width="4" />
+    <path d="M70 0 Q95 25 122 28" stroke="#E39E3A" stroke-width="6" fill="none"/>
+    <circle cx="80" cy="58" r="9" fill="#B1060F"/>
+    <circle cx="55" cy="78" r="9" fill="#B1060F"/>
+    <circle cx="96" cy="88" r="9" fill="#B1060F"/>
+    <ellipse cx="85" cy="100" rx="14" ry="6" fill="#D2E8B5"/>
+  </g>
+  <!-- Brand text -->
+  <g transform="translate(220,65)">
+    <text x="0" y="0" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu" font-weight="800" font-size="36" fill="#222">
+      Pizza Italiana
+    </text>
+    <text x="0" y="44" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu" font-weight="500" font-size="28" fill="#555" letter-spacing="1">
+      Napoletana
+    </text>
+  </g>
+</svg>

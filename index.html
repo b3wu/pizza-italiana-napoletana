@@ -1,229 +1,96 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pizza Italiana Napoletana — Pizzeria neapolitańska</title>
-  <meta name="description" content="Autentyczna pizza neapolitańska wypiekana w 90 sekund. Zamów online lub zarezerwuj stolik." />
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" href="assets/img/logo.svg" as="image" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script defer src="assets/js/script.js"></script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pizza Italiana Napoletana — Zamów online</title>
+<link rel="icon" href="assets/img/logo.svg"/><link rel="stylesheet" href="assets/css/styles.css"/>
+<script>window.MENU = {"Pizze klasyczne": [{"id": "margherita", "n": "Margherita", "d": "San Marzano, fior di latte, bazylia", "p": 28}, {"id": "marinara", "n": "Marinara", "d": "Sos pomidorowy, czosnek, oregano", "p": 24}, {"id": "prosciutto", "n": "Prosciutto e Funghi", "d": "Szynka, pieczarki, fior di latte", "p": 36}], "Specjalne": [{"id": "diavola", "n": "Diavola", "d": "Spianata piccante, miód peperoncino", "p": 39}, {"id": "quattro", "n": "Quattro Formaggi", "d": "Fior di latte, gorgonzola, parmezan, pecorino", "p": 41}]};</script>
+<script defer src="assets/js/script.js"></script>
 </head>
 <body>
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="#">
-        <img src="assets/img/logo.svg" alt="Pizza Italiana Napoletana logo" />
-        <span>Pizza Italiana Napoletana</span>
-      </a>
-      <button class="mobile-toggle" aria-label="menu">☰</button>
-      <ul>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#rezerwacje">Rezerwacje</a></li>
-        <li><a href="#dostawa">Dostawa</a></li>
-        <li><a href="#o-nas">O nas</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-      <a href="#dostawa" class="cta">Zamów online</a>
-    </div>
-  </header>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="#"><img src="assets/img/logo.svg" alt="Logo"/><span>Pizza Italiana Napoletana</span></a>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#zamow">Zamówienie</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <button class="cta" onclick="document.querySelector('#menu').scrollIntoView()">Zamów online</button>
+  </div>
+</header>
 
-  <section class="hero">
-    <div class="container hero-content">
-      <div>
-        <h1>Neapol w 2025 — <br/>90 sekund w piecu, lata w pamięci.</h1>
-        <p>Ciasto 48h, mąka typu 00, pomidory San Marzano, fior di latte. Prawdziwa <strong>pizza Napoletana</strong> w Twoim mieście.</p>
-        <div class="badges">
-          <span class="badge">Wypiek 450–500°C</span>
-          <span class="badge">Dostawa 30–45 min</span>
-          <span class="badge">Wege & bezgluten</span>
-        </div>
-        <div class="notice">Promka tygodnia: 2x Margherita = 50 PLN (pon–czw do 16:00)</div>
-      </div>
-      <div class="hero-card">
-        <div class="kicker">Szybka rezerwacja</div>
-        <form id="rezerwacja" aria-label="Formularz rezerwacji">
-          <label>Data i godzina
-            <input type="datetime-local" required />
-          </label><br/>
-          <label>Liczba osób
-            <select required>
-              <option value="">Wybierz...</option>
-              <option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
-            </select>
-          </label><br/>
-          <label>Telefon
-            <input type="tel" placeholder="+48 600 000 000" required />
-          </label><br/>
-          <button class="cta" type="submit">Zarezerwuj</button>
-        </form>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>Neapol 2025 — 90 sekund w piecu.</h1>
+      <p class="small">Ciasto 48h • San Marzano • fior di latte • piec 450–500°C</p>
+      <div class="partners" style="margin-top:8px">
+        <span class="partner"><img src="assets/img/partners/wolt.svg" alt="Wolt"/>Wolt</span>
+        <span class="partner"><img src="assets/img/partners/glovo.svg" alt="Glovo"/>Glovo</span>
+        <span class="partner"><img src="assets/img/partners/ubereats.svg" alt="Uber Eats"/>UberEats</span>
       </div>
     </div>
-  </section>
+    <div class="card">
+      <h3>Szybka rezerwacja (mock)</h3>
+      <p class="small">Na razie bez bazy — tylko Stripe dla koszyka.</p>
+      <label>Data i godzina <input type="datetime-local"/></label><br/>
+      <label>Osób <input type="number" min="1" value="2"/></label><br/>
+      <label>Telefon <input type="tel" placeholder="+48 ..."/></label><br/>
+      <button class="cta" disabled>Wyślij (wkrótce)</button>
+    </div>
+  </div>
+</section>
 
-  <section id="menu" class="section">
-    <div class="container">
-      <h2>Menu</h2>
-      <p class="small">Nasze ciasto dojrzewa minimum 48h. Ceny w PLN. *Wersje bezglutenowe +6 PLN.</p>
-      <div class="split">
-        <div>
-          <h3>Pizze klasyczne</h3>
-          <div class="menu-grid">
-            <div class="menu-item"><div><div class="menu-title">Margherita</div><div class="menu-desc">Sos San Marzano, fior di latte, bazylia</div></div><div class="menu-price">28</div></div>
-            <div class="menu-item"><div><div class="menu-title">Marinara</div><div class="menu-desc">Sos pomidorowy, czosnek, oregano</div></div><div class="menu-price">24</div></div>
-            <div class="menu-item"><div><div class="menu-title">Prosciutto e Funghi</div><div class="menu-desc">Szynka, pieczarki, fior di latte</div></div><div class="menu-price">36</div></div>
-          </div>
+<section id="menu" class="section">
+  <div class="container">
+    <h2>Menu</h2>
+    <div id="menu-root" class="menu-grid"></div>
+  </div>
+</section>
 
-          <h3>Specjalne</h3>
-          <div class="menu-grid">
-            <div class="menu-item"><div><div class="menu-title">Diavola</div><div class="menu-desc">Spianata piccante, fior di latte, miód peperoncino</div></div><div class="menu-price">39</div></div>
-            <div class="menu-item"><div><div class="menu-title">Quattro Formaggi</div><div class="menu-desc">Fior di latte, gorgonzola, parmezan, pecorino</div></div><div class="menu-price">41</div></div>
-            <div class="menu-item"><div><div class="menu-title">Pistacchio e Mortadella</div><div class="menu-desc">Krem pistacjowy, mortadella, burrata</div></div><div class="menu-price">46</div></div>
-          </div>
-
-          <h3>Białe (bez sosu)</h3>
-          <div class="menu-grid">
-            <div class="menu-item"><div><div class="menu-title">Tartufo</div><div class="menu-desc">Krem truflowy, grzyby, rukola</div></div><div class="menu-price">44</div></div>
-            <div class="menu-item"><div><div class="menu-title">Patate</div><div class="menu-desc">Ziemniak, rozmaryn, parmezan</div></div><div class="menu-price">34</div></div>
-          </div>
-        </div>
-        <div>
-          <h3>Dodatki</h3>
-          <div class="menu-grid">
-            <div class="menu-item"><div><div class="menu-title">Oliwki</div><div class="menu-desc">Mix oliwek włoskich</div></div><div class="menu-price">9</div></div>
-            <div class="menu-item"><div><div class="menu-title">Foccacia</div><div class="menu-desc">Z rozmarynem i oliwą</div></div><div class="menu-price">14</div></div>
-          </div>
-
-          <h3>Napoje</h3>
-          <div class="menu-grid">
-            <div class="menu-item"><div><div class="menu-title">Limonata artigianale</div><div class="menu-desc">Cytrynowa, 0.33l</div></div><div class="menu-price">12</div></div>
-            <div class="menu-item"><div><div class="menu-title">San Pellegrino</div><div class="menu-desc">Woda gazowana, 0.5l</div></div><div class="menu-price">10</div></div>
-            <div class="menu-item"><div><div class="menu-title">Espresso</div><div class="menu-desc">Podwójne</div></div><div class="menu-price">10</div></div>
-          </div>
-
-          <h3>Desery</h3>
-          <div class="menu-grid">
-            <div class="menu-item"><div><div class="menu-title">Tiramisu</div><div class="menu-desc">Klasyczne na espresso</div></div><div class="menu-price">19</div></div>
-            <div class="menu-item"><div><div class="menu-title">Panna Cotta</div><div class="menu-desc">Z sosem malinowym</div></div><div class="menu-price">17</div></div>
-          </div>
-        </div>
+<section id="zamow" class="section">
+  <div class="container">
+    <div class="card">
+      <h3>Koszyk i zamówienie</h3>
+      <div class="row">
+        <label>Sposób realizacji
+          <select id="deliveryMethod"><option value="pickup">Odbiór osobisty</option><option value="delivery">Dostawa (+6 PLN)</option></select>
+        </label>
+      </div>
+      <div class="totals">
+        <div>Razem: <strong id="checkout-subtotal">0,00 PLN</strong></div>
+        <div>Dostawa: <strong id="checkout-delivery">0,00 PLN</strong></div>
+        <div>Do zapłaty: <strong id="checkout-total">0,00 PLN</strong></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button id="payNow" class="cta" type="button">Zapłać online</button>
+        <button id="emailOrder" class="cta" type="button">Zamów przez e‑mail</button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="dostawa" class="section">
-    <div class="container split">
-      <div>
-        <h2>Dostawa i odbiór</h2>
-        <p>Współpracujemy z kurierami w promieniu 6 km. Czas dostawy: 30–45 min. Odbiór osobisty gotowy średnio w 15–20 min.</p>
-        <ul>
-          <li>Telefon: <a href="tel:+48600000000">+48 600 000 000</a></li>
-          <li>Zamów przez: <strong>Glovo • UberEats • Wolt</strong> (podlinkuj po uruchomieniu)</li>
-          <li>Godziny: pn–czw 12:00–21:00, pt–sb 12:00–22:30, nd 12:00–21:00</li>
-        </ul>
-        <div class="notice small">Masz alergie? Zapytaj obsługę o listę alergenów.</div>
-      </div>
-      <div>
-        <h2>Rezerwacje</h2>
-        <p>Zarezerwuj stolik online lub telefonicznie.</p>
-        <form id="rezerwacja2" aria-label="Formularz rezerwacji drugi">
-          <label>Data
-            <input type="date" required />
-          </label><br/>
-          <label>Godzina
-            <input type="time" required />
-          </label><br/>
-          <label>Osób
-            <input type="number" min="1" max="12" value="2" required />
-          </label><br/>
-          <button class="cta" type="submit">Rezerwuj</button>
-        </form>
-      </div>
-    </div>
-  </section>
+<section id="kontakt" class="section">
+  <div class="container">
+    <h2>Kontakt</h2>
+    <p>Ul. Przykładowa 10, 00-000 Miasto • tel. <a href="tel:+48600000000">+48 600 000 000</a></p>
+  </div>
+</section>
 
-  <section id="o-nas" class="section">
-    <div class="container split">
-      <div>
-        <h2>O nas</h2>
-        <p>Pizza Italiana Napoletana to miłość do prostych składników i rzemiosła. Ciasto dojrzewa powoli, piec rozpala się wcześnie, a pierwsza pizza wyjeżdża po 90 sekundach.</p>
-        <table class="table">
-          <tr><th>Składniki</th><th>Pochodzenie</th></tr>
-          <tr><td>Pomidory San Marzano</td><td>Kampania, Włochy</td></tr>
-          <tr><td>Mąka 00</td><td>Włochy</td></tr>
-          <tr><td>Fior di latte</td><td>Italia</td></tr>
-        </table>
-      </div>
-      <div>
-        <h2>Galeria</h2>
-        <div id="galeria" class="gallery">
-          <div class="ph">Pizza</div>
-          <div class="ph">Piec</div>
-          <div class="ph">Ciasto</div>
-          <div class="ph">Sala</div>
-          <div class="ph">Szef</div>
-          <div class="ph">Składniki</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<button class="cart-fab">Koszyk <span class="count">0</span></button>
+<div class="drawer" aria-label="Koszyk">
+  <div class="row"><h3 style="margin:0">Twój koszyk</h3><button id="closeDrawer" class="partner">Zamknij</button></div>
+  <div class="items"></div>
+  <div class="totals">
+    <div>Razem: <strong id="drawer-subtotal">0,00 PLN</strong></div>
+    <div>Dostawa: <strong id="drawer-delivery">0,00 PLN</strong></div>
+    <div>Do zapłaty: <strong id="drawer-total">0,00 PLN</strong></div>
+  </div>
+  <button id="clearCart" class="partner" style="margin-top:8px">Wyczyść</button>
+</div>
 
-  <section id="kontakt" class="section">
-    <div class="container split">
-      <div>
-        <h2>Kontakt</h2>
-        <p>Ul. Przykładowa 10, 00-000 Miasto</p>
-        <p>Telefon: <a href="tel:+48600000000">+48 600 000 000</a><br/>Email: <a href="mailto:kontakt@napoletana.pl">kontakt@napoletana.pl</a></p>
-        <div class="notice small">Mapa Google: wklej tutaj iframe z Map Google po uruchomieniu lokalu.</div>
-      </div>
-      <div>
-        <h2>Napisz do nas</h2>
-        <form id="kontakt">
-          <label>Imię
-            <input type="text" required>
-          </label><br/>
-          <label>Email
-            <input type="email" required>
-          </label><br/>
-          <label>Wiadomość
-            <textarea rows="4" required></textarea>
-          </label><br/>
-          <button class="cta" type="submit">Wyślij</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container cols">
-      <div>
-        <div class="brand">
-          <img src="assets/img/logo.svg" alt="" />
-          <span>Pizza Italiana Napoletana</span>
-        </div>
-        <p class="small">© 2025 Pizza Italiana Napoletana. Wszelkie prawa zastrzeżone.</p>
-      </div>
-      <div>
-        <strong>Strony</strong><br/>
-        <a href="#menu">Menu</a><br/>
-        <a href="#rezerwacje">Rezerwacje</a><br/>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-      <div>
-        <strong>Informacje</strong><br/>
-        <a href="#">Polityka prywatności</a><br/>
-        <a href="#">Regulamin</a><br/>
-        <a href="#">Alergeny</a>
-      </div>
-      <div>
-        <strong>Social</strong><br/>
-        <a href="#">Instagram</a><br/>
-        <a href="#">Facebook</a><br/>
-        <a href="#">TikTok</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+<footer class="footer">
+  <div class="container"><div class="small">© 2025 Pizza Italiana Napoletana</div></div>
+</footer>
+</body></html>

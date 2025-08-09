@@ -1,6 +1,7 @@
 
-Deploy (Stripe only):
-1) W Netlify ustaw STRIPE_SECRET_KEY, SUCCESS_URL, CANCEL_URL (zrobiłeś).
-2) Zdeployuj z repo albo przez Netlify CLI (drag&drop nie uruchomi Functions).
-3) Po deployu wejdź na /.netlify/functions/create-checkout-session (powinno zwrócić 'Method Not Allowed').
-4) Na stronie dodaj pozycje do koszyka -> 'Zapłać online' -> Stripe Checkout (test: 4242 4242 4242 4242).
+Instrukcja (FULL + Stripe, bez bazy):
+1) W Netlify dodaj zmienne: STRIPE_SECRET_KEY (Secret), SUCCESS_URL, CANCEL_URL.
+   Domyślne: https://pizza-italiana-napoletana.netlify.app/success.html i /cancel.html
+2) Zdeployuj przez Netlify CLI albo Import from Git (drag&drop samych plików statycznych nie uruchomi Functions).
+3) Test: /.netlify/functions/create-checkout-session → 405 (OK). Na stronie: koszyk → Zapłać online.
+Karta testowa: 4242 4242 4242 4242 (dowolna data/CVC).

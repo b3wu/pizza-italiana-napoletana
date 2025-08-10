@@ -1,22 +1,33 @@
-<!doctype html><html lang='pl'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Menu</title><link rel='icon' href='./assets/img/logo.svg' type='image/svg+xml'><link rel='stylesheet' href='./assets/css/styles.css'><script defer src='./assets/js/menu.js'></script><script defer src='./assets/js/script.js'></script></head><body>
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu</title>
+  <link rel="icon" href="./assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <script defer src="./assets/js/menu.js"></script>
+  <script defer src="./assets/js/script.js"></script>
+</head>
+<body>
 <header class="header">
-  <div class="container">
-    <div class="topbar">
-      <a class="brand" href="./index.html"><img src="./assets/img/logo.svg" alt="Logo"> <strong>Pizza Italiana Napoletana</strong></a>
-      <button class="cart-btn" onclick="location.href='./order.html'">Koszyk <span class="cart-count">0</span></button>
-    </div>
-    <nav class="links">
-      <a href="./index.html">Start</a>
-      <a href="./menu.html" aria-current="page">Menu</a>
-      <a href="./order.html">Zamówienie</a>
-      <a href="./contact.html">Kontakt</a>
-      <a href="./regulamin.html">Regulamin</a>
-      <a href="./privacy.html">Prywatność</a>
-    </nav>
+  <div class="container nav">
+    <a class="brand" href="./index.html"><img src="./assets/img/logo.svg" alt="Logo"> <strong>Pizza Italiana Napoletana</strong></a>
+    <ul>
+      <li><a href="./menu.html" aria-current="page">Menu</a></li>
+      <li><a href="./order.html">Zamówienie</a></li>
+      <li><a href="./contact.html">Kontakt</a></li>
+      <li><a href="./regulamin.html">Regulamin</a></li>
+      <li><a href="./privacy.html">Prywatność</a></li>
+    </ul>
+    <button class="cta" onclick="location.href='./order.html'">Koszyk <span class="cart-count">0</span></button>
   </div>
 </header>
-
-<section class='section'><div class='container'><h1>Menu</h1><div id='menu-root' class='menu-grid'></div></div></section>
+<section class="section">
+  <div class="container">
+    <h1>Menu</h1>
+    <div id="menu-root" class="menu-grid"></div>
+  </div>
+</section>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   const root=document.getElementById('menu-root'); root.innerHTML='';
@@ -32,8 +43,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 });
 </script>
-
-<footer class="footer">
-  <div class="container"><div class="kicker">© 2025 Pizza Italiana Napoletana • <a href="./privacy.html">Prywatność</a> • <a href="./regulamin.html">Regulamin</a></div></div>
-</footer>
-</body></html>
+<footer class="footer"><div class="container"><div class="kicker">© 2025 Pizza Italiana Napoletana • <a href="./privacy.html">Prywatność</a> • <a href="./regulamin.html">Regulamin</a></div></div></footer>
+</body>
+</html>

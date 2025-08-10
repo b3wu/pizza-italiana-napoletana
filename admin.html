@@ -1,0 +1,51 @@
+<!doctype html><html lang="pl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="./assets/css/styles.css"><title>Admin — Zamówienia</title>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://uovwtfpclmmnynmodbgc.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvdnd0ZnBjbG1tbnlubW9kYmdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4NTMwNTcsImV4cCI6MjA3MDQyOTA1N30.qnLt9SlrbUTqs89PLlPCyxDr2hzOHr0L4qYPJ3miyKQ";
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+async function loadOrders() {
+  const tbody = document.getElementById('orders'); tbody.innerHTML = '<tr><td colspan=6>Ładowanie...</td></tr>';
+  const { data, error } = await client.from('orders').select('*').order('created_at', { ascending:false }).limit(200);
+  if(error) { tbody.innerHTML = `<tr><td colspan=6>Błąd: ${error.message}</td></tr>`; return; }
+  tbody.innerHTML = '';
+  data.forEach(o=>{
+    const tr = document.createElement('tr');
+    const items = (o.items||[]).map(i=>`${i.name} x${i.qty}`).join(', ');
+    tr.innerHTML = `<td>${o.id}</td><td>${new Date(o.created_at).toLocaleString()}</td><td>${o.name||''}</td><td>${o.phone||''}</td><td>${o.total_price||o.total||''}</td>
+    <td><span class="badge ${o.payment_status==='paid'?'paid':''}">${o.payment_status}</span></td>
+    <td>${items}</td><td><button data-id="${o.id}" data-st="in_progress">W realizacji</button> <button data-id="${o.id}" data-st="ready">Gotowe</button></td>`;
+    tbody.appendChild(tr);
+  });
+  tbody.querySelectorAll('button[data-id]').forEach(btn=>{ btn.onclick=()=>updateStatus(btn.dataset.id, btn.dataset.st); });
+}
+
+async function updateStatus(id, status) {
+  const res = await fetch('/.netlify/functions/admin-update-order', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id, status }) });
+  if(!res.ok) { alert('Błąd aktualizacji'); return; }
+  await loadOrders();
+}
+
+document.addEventListener('DOMContentLoaded', loadOrders);
+</script></head>
+<body>
+<header class="header"><div class="container">
+  <div class="top"><a class="brand" href="./index.html"><img src="./assets/img/logo.svg"><strong>Pizza Italiana Napoletana</strong></a>
+  <button class="cart-btn" onclick="location.href='./order.html'">Koszyk <span class="cart-count">0</span></button></div>
+  <nav class="links">
+    <a href="./index.html">Start</a> <a href="./menu.html">Menu</a> <a href="./order.html">Zamówienie</a> <a href="./contact.html">Kontakt</a> <a href="./admin.html" aria-current="page">Admin</a> <a href="./regulamin.html">Regulamin</a> <a href="./privacy.html">Prywatność</a>
+  </nav>
+</div></header>
+
+<section class="section"><div class="container">
+  <h1>Panel zamówień</h1>
+  <table class="admin-table">
+    <thead><tr><th>ID</th><th>Data</th><th>Klient</th><th>Telefon</th><th>Suma</th><th>Status</th><th>Pozycje</th><th>Akcje</th></tr></thead>
+    <tbody id="orders"></tbody>
+  </table>
+</div></section>
+<footer class='footer'><div class='container'><div class='kicker'>© 2025 Pizza Italiana Napoletana</div></div></footer>
+</body></html>

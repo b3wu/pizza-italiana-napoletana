@@ -1,1 +1,1 @@
-{"name":"pin-classic-full","private":true,"version":"1.0.0","dependencies":{"stripe":"^14.0.0"}}
+{"name":"pin-classic-full-v3","private":true,"version":"1.2.0","dependencies":{"stripe":"^14.0.0"}}

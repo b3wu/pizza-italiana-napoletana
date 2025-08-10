@@ -1,12 +1,10 @@
-const SUPABASE_URL = "https://uovwtfpclmmnynmodbgc.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvdnd0ZnBjbG1tbnlubW9kYmdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4NTMwNTcsImV4cCI6MjA3MDQyOTA1N30.qnLt9SlrbUTqs89PLlPCyxDr2hzOHr0L4qYPJ3miyKQ";
-
 const qs=s=>document.querySelector(s); const qsa=s=>Array.from(document.querySelectorAll(s));
-let CART = JSON.parse(localStorage.getItem('cart_v5')||'[]');
-const save=()=>localStorage.setItem('cart_v5', JSON.stringify(CART));
+let CART = JSON.parse(localStorage.getItem('cart_v3')||'[]');
+const save=()=>localStorage.setItem('cart_v3', JSON.stringify(CART));
 const fmt=n=>n.toFixed(2).replace('.', ',')+' PLN';
 function totals(method){ const sub=CART.reduce((s,i)=>s+i.price*i.qty,0); const del=method==='delivery'?6:0; return {sub,del,total:sub+del}; }
 function updateCartCount(){ const cnt = CART.reduce((a,b)=>a+b.qty,0); qsa('.cart-count').forEach(el=>el.textContent = cnt); }
+
 function addItem(p){ const f=CART.find(x=>x.id===p.id); if(f) f.qty++; else CART.push({id:p.id,name:p.n,price:p.p,qty:1}); save(); updateCartCount(); }
 function removeItem(id){ CART = CART.filter(x=>x.id!==id); save(); updateCartCount(); }
 function changeQty(id, delta){ const it=CART.find(x=>x.id===id); if(!it) return; it.qty=Math.max(1,(it.qty||1)+delta); save(); updateCartCount(); }
@@ -23,7 +21,7 @@ function renderOrder(){
   const tbody = qs('#order-items'); if(!tbody) return;
   tbody.innerHTML='';
   CART.forEach(it=>{
-    const tr = document.createElement('tr');
+    const tr = document.createElement('tr'); tr.className='fade-in';
     tr.innerHTML = `<td>${it.name}</td>
     <td>${fmt(it.price)}</td>
     <td class="qty"><button data-a="dec">−</button><span>${it.qty}</span><button data-a="inc">+</button></td>
@@ -45,26 +43,29 @@ function renderOrder(){
 document.addEventListener('DOMContentLoaded',()=>{
   updateCartCount();
   if(window.MENU){ bindMenuButtons(window.MENU); }
+
   if(qs('#order-items')){
-    const dm=qs('#deliveryMethod'); if(dm) dm.onchange=renderOrder;
+    const dm=qs('#deliveryMethod'); if(dm){ dm.onchange=renderOrder; }
     const pay = qs('#payNow'); if(pay){
       pay.onclick=async()=>{
         if(CART.length===0){ alert('Koszyk jest pusty'); return; }
-        const pickup = qs('#pickup').checked;
-        const name = qs('#name').value.trim();
-        const surname = qs('#surname').value.trim();
-        const phone = qs('#phone').value.trim();
-        const notes = qs('#notes').value.trim();
-        const address = pickup ? 'Odbiór osobisty' : `${qs('#street').value.trim()}, ${qs('#zip').value.trim()} ${qs('#city').value.trim()}`;
-        if(!name || !surname || !phone || (!pickup && (qs('#street').value.trim()==='' || qs('#zip').value.trim()==='' || qs('#city').value.trim()===''))){ alert('Uzupełnij dane zamówienia.'); return; }
-        const method = pickup ? 'pickup' : 'delivery';
-        const payload = { cart: CART, delivery: method==='delivery'?6:0, currency:'pln', customer:{name:`${name} ${surname}`, phone, address, notes, method} };
-        const res = await fetch('/.netlify/functions/create-checkout-session', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        const method = qs('#deliveryMethod')?.value || 'pickup';
+        const payload = { cart: CART, delivery: method==='delivery'?6:0, currency:'pln' };
+        const res = await fetch('/.netlify/functions/create-checkout-session', {
+          method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
+        });
         if(!res.ok){ alert('Błąd płatności ('+res.status+'): '+await res.text()); return; }
         const data = await res.json(); location.href = data.url;
       };
     }
-    const clear = qs('#clearCart'); if(clear) clear.onclick=()=>{ CART=[]; save(); renderOrder(); };
+    const clear = qs('#clearCart'); if(clear){ clear.onclick=()=>{ CART=[]; save(); renderOrder(); }; }
     renderOrder();
   }
+
+  // Drawer on index (floating cart)
+  const fab = qs('.cart-fab'), drawer = qs('.drawer');
+  if(fab && drawer){ fab.onclick=()=>drawer.classList.add('open'); }
+  const close = qs('#closeDrawer'); if(close){ close.onclick=()=>drawer.classList.remove('open'); }
+
+  const emailBtn = document.getElementById('emailOrder'); if(emailBtn){ emailBtn.remove(); }
 });

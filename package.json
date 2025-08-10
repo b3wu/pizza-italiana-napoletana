@@ -1,1 +1,1 @@
-{"name":"pin-supa-stripe-admin","private":true,"version":"1.0.0","dependencies":{"stripe":"^14.0.0","@supabase/supabase-js":"^2.45.0"}}
+{"name":"pin-classic-full-v3","private":true,"version":"1.2.0","dependencies":{"stripe":"^14.0.0"}}

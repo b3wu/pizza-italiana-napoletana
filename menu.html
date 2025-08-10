@@ -1,25 +1,46 @@
-<!doctype html><html lang="pl"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="./assets/css/styles.css"><title>Menu</title>
-<script defer src="./assets/js/menu.js"></script><script defer src="./assets/js/script.js"></script></head>
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu</title>
+  <link rel="icon" href="./assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <script defer src="./assets/js/menu.js"></script>
+  <script defer src="./assets/js/script.js"></script>
+</head>
 <body>
-<header class="header"><div class="container">
-  <div class="top"><a class="brand" href="./index.html"><img src="./assets/img/logo.svg"><strong>Pizza Italiana Napoletana</strong></a>
-  <button class="cart-btn" onclick="location.href='./order.html'">Koszyk <span class="cart-count">0</span></button></div>
-  <nav class="links">
-    <a href="./index.html">Start</a> <a href="./menu.html" aria-current="page">Menu</a> <a href="./order.html">Zamówienie</a> <a href="./contact.html">Kontakt</a> <a href="./admin.html">Admin</a> <a href="./regulamin.html">Regulamin</a> <a href="./privacy.html">Prywatność</a>
-  </nav>
-</div></header>
 
-<section class="section"><div class="container"><h1>Menu</h1><div id="menu-root" class="menu-grid"></div></div></section>
+<header class="header">
+  <div class="container">
+    <div class="topbar">
+      <a class="brand" href="./index.html"><img src="./assets/img/logo.svg" alt="Logo"> <strong>Pizza Italiana Napoletana</strong></a>
+      <button class="cart-btn" onclick="location.href='./order.html'">Koszyk <span class="cart-count">0</span></button>
+    </div>
+    <nav class="links">
+      <a href="./index.html">Start</a>
+      <a href="./menu.html" aria-current="page">Menu</a>
+      <a href="./order.html">Zamówienie</a>
+      <a href="./contact.html">Kontakt</a>
+      <a href="./regulamin.html">Regulamin</a>
+      <a href="./privacy.html">Prywatność</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h1>Menu</h1>
+    <div id="menu-root" class="menu-grid"></div>
+  </div>
+</section>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   const root=document.getElementById('menu-root'); root.innerHTML='';
   Object.keys(window.MENU).forEach(cat=>{
     const h=document.createElement('h3'); h.textContent=cat; root.appendChild(h);
     window.MENU[cat].forEach(p=>{
-      const row=document.createElement('div'); row.className='menu-item';
-      row.innerHTML=`<div><div class="menu-title">${p.n}</div><div class="kicker">${p.d}</div></div>
+      const row=document.createElement('div'); row.className='menu-item fade-in';
+      row.innerHTML=`<div><div class="menu-title">${p.n}</div><div class="small">${p.d}</div></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px"><div><strong>${p.p} PLN</strong></div>
       <button class="cta" data-add="${p.id}" style="padding:6px 10px">Dodaj</button></div>`;
       root.appendChild(row);
@@ -27,4 +48,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 });
 </script>
-<footer class='footer'><div class='container'><div class='kicker'>© 2025 Pizza Italiana Napoletana</div></div></footer></body></html>
+
+<footer class="footer">
+  <div class="container"><div class="kicker">© 2025 Pizza Italiana Napoletana • <a href="./privacy.html">Prywatność</a> • <a href="./regulamin.html">Regulamin</a></div></div>
+</footer>
+
+</body>
+</html>

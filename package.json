@@ -1,9 +1,1 @@
-
-{
-  "name": "pizza-italiana-napoletana",
-  "private": true,
-  "version": "1.0.0",
-  "dependencies": {
-    "stripe": "^14.0.0"
-  }
-}
+{"name":"pin-classic-full","private":true,"version":"1.0.0","dependencies":{"stripe":"^14.0.0"}}
